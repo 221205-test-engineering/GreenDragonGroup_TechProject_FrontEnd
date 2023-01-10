@@ -1,10 +1,9 @@
 Feature: View Information
 
-
   Scenario Outline: View all the games
     Given user is logged in using "<username>" and <"password"> as login credentials
-    When the user clicks on the Game button
-    Then the user should see the details of all the games
+    When user clicks Game button
+    Then user should see the details of all the games
     # no games are displayed
 
     Examples:
@@ -17,8 +16,8 @@ Feature: View Information
 
   Scenario Outline: View all the seasons
     Given user is logged in using "<username>" and <"password"> as login credentials
-    When the user clicks on the View Seasons button
-    Then the user should see the season names
+    When user clicks View Seasons button
+    Then user should see the season names
     # able to see all seasons
 
     Examples:
@@ -30,8 +29,8 @@ Feature: View Information
 
   Scenario Outline: View all the venues
     Given user is logged in using "<username>" and <"password"> as login credentials
-    When the user clicks on the View Venues button
-    Then the user should see the venue names
+    When user clicks View Venues button
+    Then user should see the venue names
     # able to see all venues
 
     Examples:
@@ -43,8 +42,8 @@ Feature: View Information
 
   Scenario Outline: View all the schedules
     Given user is logged in using "<username>" and <"password"> as login credentials
-    When The user is on their homepage
-    Then the user should see a button to View the Schedule
+    When user is on their homepage
+    Then user should see a button to View the Schedule
     # no such button
 
     Examples:
@@ -56,28 +55,28 @@ Feature: View Information
 
   Scenario: View the Captains of each team as player
     Given user is logged in as player
-    When user clicks on the Team Applications button
-    And user clicks on See The Captain button
+    When user clicks the Team Applications button
+    And user clicks See The Captain button
     Then user should see the captain of the team
     # able to see all team's captains
 
   Scenario: View the Captains of each team as referee
     Given user is logged in as referee
-    When the referee is on their homepage
+    When user is on the referee homepage
     Then they should see a button to view Team information
     # nowhere to see captains
 
 
   Scenario: View the Captains of each team as admin
     Given user is logged in as admin
-    When admin is on their homepage
+    When user is on the admin homepage
     Then they should see a button to view Team information
     # nowhere to see captains
 
   Scenario: View the Captains of each team as captain
     Given user is logged in as captain
-    When user clicks on the View Your Team button
-    Then user should see the captain of the team
+    When user clicks the View Your Team button
+    Then user should see the captain of the teams
     # can only see captain of own team
 
 
