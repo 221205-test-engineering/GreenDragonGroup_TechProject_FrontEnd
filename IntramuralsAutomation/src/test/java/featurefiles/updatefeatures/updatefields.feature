@@ -1,49 +1,73 @@
 Feature: Update user fields
 
-  Background: The user is logged in (as...)
-    Given the user is on the login page
-    When the user logs in (re-use steps from general login feature functionality) - how to reduce code when used across different features, but files should stay in separate folders for readability?
-    Then the user is logged in on X page
-
-    #Update password, profile pic, height, weight
-    #Positive tests
-  Scenario Outline: Positive test for update inputs
-    Given the user is on "edit user profile" page ( or put request sent to "/users" while logged in)
-    When the user enters "<newData>" in the "<targetField>"
-    When the user clicks submit
-    Then the user should be prompted with an alert to confirm (
+  Scenario Outline: valid info given to all update input fields for all users
+    Given user is logged in as "<userrole>"
+    Given user is on "<userrole>" profile page
+    When user enters "<newValidData>" in "<targetfield>" field
+    When user clicks the submit button
+    Then an alert appears to confirm user update
+    Then user is on "<userrole>" profile page and the "<newValidData>" appears in the "<targetfield>" field
 
     Examples:
-      |newData    | targetField  |
-      |jellybean  | password     | Intra
-      |urlValidPic| profile_pic  |
-      |635        | height       |
-      |444        | weight       |
+      |newValidData    | targetfield  |userrole  |
+      |jellybean       | password     |player    |
+      |validUrl        | profile_pic  |player    |
+      |635             | height       |player    |
+      |444             | weight       |player    |
+      |jellybean       | password     |captain   |
+      |validUrl        | profile_pic  |captain   |
+      |635             | height       |captain   |
+      |444             | weight       |captain   |
+      |jellybean       | password     |ref       |
+      |validUrl        | profile_pic  |ref       |
+      |635             | height       |ref       |
+      |444             | weight       |ref       |
+      |jellybean       | password     |admin     |
+      |validUrl        | profile_pic  |admin     |
+      |635             | height       |admin     |
+      |444             | weight       |admin     |
 
       #Negative Tests for update password, profile pic, height, weight
   #password field has no constraints so no restrictions on special characters or empty fields
-  Scenario Outline: invalid info given
-    Given the user is on "edit user profile" page
-    When the user enters "<newData>" in the "<targetField>"
-    When the user clicks submit
-    Then no confirmation alert pops up
+  Scenario Outline: invalid info given to update input fields for all users
+    Given user is logged in as "<userrole>"
+    Given user is on "<userrole>" profile page
+    When user enters "<newInvalidData>" in "<targetfield>" field
+    When user clicks the submit button
+    Then no alert appears to confirm user update
 
     Examples:
-      |newData    | targetField  |
-      |jellybean  | password     |
-      |urlValidPic| profile_pic  |
-      |cheese     | height       |
-      | !^#@*S(   | height       |
-      | null      | height       |
-      |crackers   | weight       |
-      | !^#@*S(   | weight       |
-      | null      | weight       |
+      |newInvalidData    | targetfield  |userrole  |
+      |jellybean         | password     |player    |
+      |invalidURL        | profile_pic  |player    |
+      |635               | height       |player    |
+      |444               | weight       |player    |
+      |jellybean         | password     |captain   |
+      |invalidUrl        | profile_pic  |captain   |
+      |635               | height       |captain   |
+      |444               | weight       |captain   |
+      |jellybean         | password     |ref       |
+      |invalidUrl        | profile_pic  |ref       |
+      |635               | height       |ref       |
+      |444               | weight       |ref       |
+      |jellybean         | password     |admin     |
+      |invalidUrl        | profile_pic  |admin     |
+      |635               | height       |admin     |
+      |444               | weight       |admin     |
 
-      #Positive test for updating hide biometrics  -- negative test not possible -- update to same values is idempotent and does not need a logic check
-  Scenario: hideBiometrics is changed
-    Given the user is on the edit user profile page
-    When the user clicks the hide biometrics button
-    Then the checkbox changes value (how to write this as implementation?)
-    When the user clicks submit
-    Then a confirmation dialogue box appears
+      #Positive test for updating hide biometrics  -- #is there a negative test?
+  Scenario Outline: hidebiometrics checkbox can be updated for all roles
+    Given user is logged in as "<userrole>"
+    Given user is on "<userrole>" profile page
+    When user clicks the hide biometrics button
+    Then hidebiometrics checkbox changes value
+    When user clicks the submit button
+    Then an alert appears to confirm checkbox update
+    Then user is on "<userrole>" profile page and the checkbox value has been changed
 
+    Examples:
+    |userrole|
+    |player  |
+    |captain |
+    |ref     |
+    |admin   |

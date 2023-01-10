@@ -1,34 +1,29 @@
 Feature: login positive and negative
 
   Background: The user is on the login page
-    # test is to match current url to expected
+    Given user is on the login page
 
   #Positive test
   Scenario Outline: login with a variety of credentials
-    #Alternately the step could be written as a put request is sent to "/login" with valid username and password. Meaningful difference?
     When user enters a valid "<username>"
     When user enters a valid "<password>"
-    When user clicks login button/submits data
-    Then the database connection is made
-      #Test to make sure now sql/database connection exception thrown
-        # alternately can/needs to? be made with additional steps:
-        #then the user controller is called, which calls the registration service, which calls the user dao, which returns the userobject if credentials match
-    Then A user object is return with a username and password matching the entered username and password
+    When user clicks the login button
+    Then user is on the "<expected>" homepage
 
     Examples:
-      |username | password    |
-      |player   | playerpass  |
-      |captain  | captain pass|
-      |ref      | ref pass    |
-      |admin    | admin pass  |
+      |username | password    | expected |
+      |player   | playerpass  |          |
+      |captain  | captain pass|          |
+      |ref      | ref pass    |          |
+      |admin    | admin pass  |          |
+
 
     #Negative test1
   Scenario Outline: login with incorrect password for a variety of users
     When user enters a valid "<username>"
     When user enter an invalid "<password>"
-    When user clicks login button/submits data
-    Then the database connection is made
-    Then passwordMismatchException thrown
+    When user clicks the login button
+    Then user remains on login page
 
     Examples:
       |username | password  |
@@ -38,12 +33,11 @@ Feature: login positive and negative
       |admin    | wrong pass|
 
       #Negative test2
-  Scenario Outline: login with incorrect password for a variety of users
-    When user enters a valid "<username>"
-    When user enter an invalid "<password>"
-    When user clicks login button/submits data
-    Then the database connection is made
-    Then NoUsernameFoundException thrown
+  Scenario Outline: login with incorrect username for a variety of users
+    When user enters a invalid "<username>"
+    When user enter an valid "<password>"
+    When user clicks the login button
+    Then user remains on login page
 
     Examples:
       |username | password    |
@@ -56,13 +50,12 @@ Feature: login positive and negative
   Scenario Outline: login with empty username field
     When user enters a valid "<username>"
     When user enter an invalid "<password>"
-    When user clicks login button/submits data
-    Then the database connection is made
-    Then NoUsernameFoundException thrown
+    When user clicks the login button
+    Then user remains on login page
 
     Examples:
       |username | password    |
-      |wrong    | playerpass  |
-      |wrong    | captain pass|
-      |wrong    | ref pass    |
-      |wrong    | admin pass  |
+      |         | playerpass  |
+      |         | captain pass|
+      |         | ref pass    |
+      |         | admin pass  |
