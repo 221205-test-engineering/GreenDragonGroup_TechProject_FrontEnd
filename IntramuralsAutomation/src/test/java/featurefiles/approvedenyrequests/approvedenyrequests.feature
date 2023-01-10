@@ -2,7 +2,7 @@ Feature: Captain can approve or deny requests for their teams
 
   #positive tests - that it works
   Scenario: Captain can approve a team request
-    Given the user is logged in as captain (implement with input captain username and input captain steps)
+    Given user is logged in as captain
     Given the user is on the main page
     Then the user should see an approve/deny team requests link (xpath: "//a[contains(text(), 'Approve/Deny')]);
     When the user clicks the approve/deny link
@@ -12,7 +12,7 @@ Feature: Captain can approve or deny requests for their teams
   #Then a success message shows up saying request approved
 
   Scenario: Captain can deny a team request
-    Given the user is logged in as captain (implement with input captain username and input captain steps)
+    Given user is logged in as captain
     Given the user is on the main page
     Then the user should see an approve/deny team requests link (xpath: "//a[contains(text(), 'Approve/Deny')]);
     When the user clicks the approve/deny link
