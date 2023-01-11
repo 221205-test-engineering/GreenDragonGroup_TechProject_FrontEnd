@@ -7,11 +7,19 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import java.util.List;
 
-public class ManageUserRolesPage {
+public class ManageUserRolesPage
+{
     public WebDriver driver;
 
-    public ManageUserRolesPage(WebDriver driver) {
+    public ManageUserRolesPage(WebDriver driver)
+    {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(xpath = "")
+    public static List<WebElement> userRoles;
+
+    @FindBy(xpath = "")
+    public static List<WebElement>
 }
