@@ -14,4 +14,18 @@ public class RegisterPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(xpath = "//input[1]")
+    public WebElement username;
+    @FindBy(xpath = "//input[2]")
+    public WebElement password;
+    @FindBy(xpath = "//input[3]")
+    public WebElement height;
+    @FindBy(xpath = "//input[4]")
+    public WebElement weight;
+    @FindBy(xpath = "//input[5]")
+    public WebElement profilePic;
+    @FindBy(xpath = "//input[6]")
+    public WebElement showBio;
+
 }
