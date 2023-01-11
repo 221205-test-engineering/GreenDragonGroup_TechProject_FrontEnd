@@ -14,4 +14,14 @@ public class LoginPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(xpath = "//input[@name='username']")
+    public WebElement usernameInput;
+
+    @FindBy(xpath = "//input[@name='password']")
+    public WebElement passwordInput;
+
+    @FindBy(xpath="//button")
+    public WebElement loginButton;
+
 }
