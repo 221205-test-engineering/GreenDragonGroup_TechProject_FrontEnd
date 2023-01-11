@@ -12,8 +12,11 @@ import static org.junit.Assert.*;
 public class ViewInformationImpl {
     public WebDriver driver = Runner.driver;
     public LoginPage loginPage = Runner.loginPage;
-
     public HomePage homePage = Runner.homePage;
+    public TeamApplicationPage teamApplicationPage = Runner.teamApplicationPage;
+    public ViewSeasonsPage viewSeasonsPage = Runner.viewSeasonsPage;
+    public ViewTeamPage viewTeamPage = Runner.viewTeamPage;
+    public ViewVenuesPage viewVenuesPage = Runner.viewVenuesPage;
 
     @Given("user is logged in using {string} and <{string}> as login credentials")
     public void user_is_logged_in_using_and_as_login_credentials(String string, String string2) {
@@ -32,11 +35,11 @@ public class ViewInformationImpl {
     }
 
 
-    @Given("user is logged in using {string} and <{string}> as login credentials")
-    public void user_is_logged_in_using_and_as_login_credentials(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+//    @Given("user is logged in using {string} and <{string}> as login credentials")
+//    public void user_is_logged_in_using_and_as_login_credentials(String string, String string2) {
+//        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
+//    }
     @When("user clicks View Seasons button")
     public void user_clicks_view_seasons_button() {
         // Write code here that turns the phrase above into concrete actions
@@ -49,11 +52,11 @@ public class ViewInformationImpl {
     }
 
 
-    @Given("user is logged in using {string} and <{string}> as login credentials")
-    public void user_is_logged_in_using_and_as_login_credentials(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+//    @Given("user is logged in using {string} and <{string}> as login credentials")
+//    public void user_is_logged_in_using_and_as_login_credentials(String string, String string2) {
+//        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
+//    }
     @When("user clicks View Venues button")
     public void user_clicks_view_venues_button() {
         // Write code here that turns the phrase above into concrete actions
@@ -67,11 +70,11 @@ public class ViewInformationImpl {
 
 
 
-    @Given("user is logged in using {string} and <{string}> as login credentials")
-    public void user_is_logged_in_using_and_as_login_credentials(String string, String string2) {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+//    @Given("user is logged in using {string} and <{string}> as login credentials")
+//    public void user_is_logged_in_using_and_as_login_credentials(String string, String string2) {
+//        // Write code here that turns the phrase above into concrete actions
+//        throw new io.cucumber.java.PendingException();
+//    }
     @When("user is on their homepage")
     public void user_is_on_their_homepage() {
         // Write code here that turns the phrase above into concrete actions

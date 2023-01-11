@@ -20,6 +20,6 @@ public class ManageUserRolesPage
     @FindBy(xpath = "")
     public static List<WebElement> userRoles;
 
-    @FindBy(xpath = "")
-    public static List<WebElement>
+//    @FindBy(xpath = "")
+//    public static List<WebElement>
 }

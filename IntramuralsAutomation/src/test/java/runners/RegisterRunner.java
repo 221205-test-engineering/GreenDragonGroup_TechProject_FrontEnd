@@ -11,19 +11,19 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features =
-        {
-                "<Enter path to feature file here>",
-                "<Enter path to another feature file here>"
-        }, glue = "steps")
+@CucumberOptions(features = {"src/test/java/features/register"},
+                glue = "src/test/java/steps/register")
+
 public class RegisterRunner {
 
     public static WebDriver driver;
+    public static RegisterPage registerPage;
 
     @BeforeClass
     public static void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+        registerPage = new RegisterPage(driver);
     }
 
     @AfterClass
