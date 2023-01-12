@@ -14,13 +14,13 @@ public class TeamApplicationPage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//td/button[1]")
+    @FindBy(xpath = "//tr[1]/td/button")
     public WebElement seeCaptainBtn1;
 
-    @FindBy(xpath = "//td/button[2]")
+    @FindBy(xpath = "//tr[2]/td/button")
     public WebElement seeCaptainBtn2;
 
-    @FindBy(xpath = "//td/button[3]")
+    @FindBy(xpath = "//tr[3]/td/button")
     public WebElement seeCaptainBtn3;
 
     @FindBy(xpath = "//p[contains(text(), 'Bobby202')]")

@@ -32,6 +32,9 @@ public class HomePage {
     @FindBy(xpath = "//a[contains(text(), 'View Your Team')]")
     public WebElement viewTeamButton;
 
+    @FindBy(xpath = "//a[contains(text(), 'Team Applications')]")
+    public WebElement teamApplicationButton;
+
     @FindBy(xpath = "//a[contains(text(), 'Edit Officiating Choice')]")
     public WebElement editOfficiatingChoiceButton;
 

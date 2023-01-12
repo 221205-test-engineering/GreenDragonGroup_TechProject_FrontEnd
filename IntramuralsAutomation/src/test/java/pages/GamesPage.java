@@ -21,4 +21,7 @@ public class GamesPage {
 
     @FindBy(xpath = "//tbody/tr[16]")
     public WebElement lastGame;
+
+    @FindBy(xpath = "//td[2]")
+    public static List<WebElement> gameDates;
 }
