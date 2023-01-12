@@ -5,6 +5,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.Select;
 
 public class TeamApplicationPage {
     public WebDriver driver;
@@ -31,5 +32,10 @@ public class TeamApplicationPage {
 
     @FindBy(xpath = "//p[contains(text(), 'Jessika202')]")
     public WebElement team3Captain;
+
+    @FindBy(tagName = "select")
+    public WebElement teamMenu;
+    @FindBy(xpath = "//div/button")
+    public WebElement applyBtn;
 
 }

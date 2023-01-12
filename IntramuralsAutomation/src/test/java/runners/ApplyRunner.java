@@ -11,18 +11,22 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features =
-        {
-                "<Enter path to feature file here>",
-                "<Enter path to another feature file here>"
-        }, glue = "steps")
+@CucumberOptions(features = "src/test/java/features/apply",
+        glue = "steps.apply")
 public class ApplyRunner {
     public static WebDriver driver;
+    public static LoginPage loginPage;
+    public static HomePage homePage;
+    public static TeamApplicationPage teamApplicationPage;
 
     @BeforeClass
     public static void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
+        teamApplicationPage = new TeamApplicationPage(driver);
     }
 
     @AfterClass
