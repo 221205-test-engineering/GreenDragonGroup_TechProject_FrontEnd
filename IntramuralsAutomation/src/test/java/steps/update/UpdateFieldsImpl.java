@@ -1,4 +1,6 @@
 package steps.update;
 
-public class UpdateFieldsImpl {
+public class UpdateFieldsImpl
+{
+
 }

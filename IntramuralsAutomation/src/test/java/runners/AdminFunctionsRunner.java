@@ -16,11 +16,13 @@ import org.openqa.selenium.chrome.ChromeDriver;
                 "<Enter path to feature file here>",
                 "<Enter path to another feature file here>"
         }, glue = "steps")
-public class AdminFunctionsRunner {
+public class AdminFunctionsRunner
+{
     public static WebDriver driver;
 
     @BeforeClass
-    public static void setup() {
+    public static void setup()
+    {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
     }
