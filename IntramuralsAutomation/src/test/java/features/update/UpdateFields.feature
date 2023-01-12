@@ -1,31 +1,28 @@
 Feature: Update user fields
 
   Scenario Outline: valid info given to all update input fields for all users
-    Given user is logged in as "<userrole>"
+    Given user is logged in as "<userrole>" with "<username>" username and "<password>" password
     Given user is on "<userrole>" profile page
     When user enters "<newValidData>" in "<targetfield>" field
     When user clicks the submit button
-    Then an alert appears to confirm user update
-    Then user is on "<userrole>" profile page and the "<newValidData>" appears in the "<targetfield>" field
+    Then an alert appears to confirm user information update
+    When user accepts update confirmation alert
+    Then an alert appears confirming successful user information update
 
     Examples:
-      |newValidData    | targetfield  |userrole  |
-      |jellybean       | password     |player    |
-      |validUrl        | profile_pic  |player    |
-      |635             | height       |player    |
-      |444             | weight       |player    |
-      |jellybean       | password     |captain   |
-      |validUrl        | profile_pic  |captain   |
-      |635             | height       |captain   |
-      |444             | weight       |captain   |
-      |jellybean       | password     |ref       |
-      |validUrl        | profile_pic  |ref       |
-      |635             | height       |ref       |
-      |444             | weight       |ref       |
-      |jellybean       | password     |admin     |
-      |validUrl        | profile_pic  |admin     |
-      |635             | height       |admin     |
-      |444             | weight       |admin     |
+      |newValidData    | targetfield  |userrole  |username      |password     |
+      |jellybean       | password     |player    |Bobby202      |pass123      |
+      |validUrl        | profile_pic  |player    |Bobby202      |pass123      |
+      |635             | height       |player    |Bobby202      |pass123      |
+      |444             | weight       |player    |Bobby202      |pass123      |
+      |jellybean       | password     |ref       |mandy101      |pass123      |
+      |validUrl        | profile_pic  |ref       |mandy101      |pass123      |
+      |635             | height       |ref       |mandy101      |pass123      |
+      |444             | weight       |ref       |mandy101      |pass123      |
+      |jellybean       | password     |admin     |gatorFan99    |chomp!!      |
+      |validUrl        | profile_pic  |admin     |gatorFan99    |chomp!!      |
+      |635             | height       |admin     |gatorFan99    |chomp!!      |
+      |444             | weight       |admin     |gatorFan99    |chomp!!      |
 
       #Negative Tests for update password, profile pic, height, weight
   #password field has no constraints so no restrictions on special characters or empty fields

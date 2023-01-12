@@ -10,7 +10,9 @@ public class HelperFunctions {
     public static void standardWait(WebDriver driver, WebElement elem) {
         new FluentWait<WebDriver>(driver).withTimeout(Duration.ofMillis(4000)).ignoring(NoSuchElementException.class).until(ExpectedConditions.visibilityOf(elem));
     }
-
+    public static void waitElemDisappear(WebDriver driver, WebElement elem){
+        new FluentWait<WebDriver>(driver).withTimeout(Duration.ofMillis(1000)).until(ExpectedConditions.invisibilityOf(elem));
+    }
     public static Alert alertWait(WebDriver driver) {
         try {
             new FluentWait<WebDriver>(driver).withTimeout(Duration.ofMillis(4000)).ignoring(NoAlertPresentException.class).until(ExpectedConditions.alertIsPresent());
