@@ -12,7 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(features = {"src/test/java/features/register"},
-                glue = "src/test/java/steps/register")
+                glue = "steps.register")
 
 public class RegisterRunner {
 

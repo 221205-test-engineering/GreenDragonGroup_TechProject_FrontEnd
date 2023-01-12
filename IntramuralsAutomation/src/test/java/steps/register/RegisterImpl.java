@@ -1,6 +1,7 @@
 package steps.register;
 
 
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
@@ -25,7 +26,13 @@ public class RegisterImpl {
 
     @Given("user is on the registration page")
     public void user_is_on_the_registration_page() {
-        driver.get("http://127.0.0.1:5500/register/register-page.html");
+        try{
+            driver.switchTo().alert().accept();
+
+        } catch (NoAlertPresentException e){
+            driver.get("http://127.0.0.1:5500/register/register-page.html");
+        }
+
     }
     @When("user types in a new Username")
     public void user_types_in_a_new_username() {
@@ -62,11 +69,17 @@ public class RegisterImpl {
     @Then("An alert saying “Registration Successful” should appear")
     public void an_alert_saying_registration_successful_should_appear() {
         String alertMsg = HelperFunctions.alertWait(driver).getText();
-        assertEquals("Registration Successful", alertMsg);
+        driver.switchTo().alert().accept();
+        driver.get("http://127.0.0.1:5500/register/register-page.html");
+
+        assertEquals("Registration successful!", alertMsg);
     }
 
+
+    // need to delete the user with blank username in DB for this test
     @When("user types in password with pass123 and leaves username blank")
     public void user_types_in_password_with_pass123_and_leaves_username_blank() {
+        HelperFunctions.standardWait(driver, registerPage.password);
         registerPage.password.sendKeys("pass123");
     }
 
@@ -75,12 +88,8 @@ public class RegisterImpl {
     public void no_success_message_should_be_shown() {
         boolean noAlert = false;
         try{
-            // if alert pops up, accept it
-            new WebDriverWait(driver, Duration.ofSeconds(2))
-                    .until(ExpectedConditions.alertIsPresent());
-            driver.switchTo().alert().accept();
+            HelperFunctions.alertWait(driver).accept();
         }catch  (TimeoutException e){
-            // if no alert, set boolean to be true
             noAlert = true;
             System.out.println(e.getMessage());
         }
@@ -92,6 +101,7 @@ public class RegisterImpl {
         String randomString = UUID.randomUUID().toString();
         System.out.println(randomString);
         registerPage.username.sendKeys(randomString);
+        registerPage.password.clear();
     }
 
 
