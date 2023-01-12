@@ -2,12 +2,14 @@ package steps.apply;
 
 import helperfunctions.HelperFunctions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
 import pages.LoginPage;
+import pages.RegisterPage;
 import pages.TeamApplicationPage;
 import runners.ApplyRunner;
 import io.cucumber.java.en.Given;
@@ -16,12 +18,13 @@ import io.cucumber.java.en.When;
 import static org.junit.Assert.assertEquals;
 
 import java.time.Duration;
+import java.util.UUID;
 
 
 public class ApplyImpl {
 
     public WebDriver driver = ApplyRunner.driver;
-
+    public RegisterPage registerPage = ApplyRunner.registerPage;
     public LoginPage loginPage = ApplyRunner.loginPage;
     public TeamApplicationPage teamApplicationPage = ApplyRunner.teamApplicationPage;
     public HomePage homePage = ApplyRunner.homePage;
@@ -30,10 +33,13 @@ public class ApplyImpl {
     // must use a user without a team/ who have not applied to a team
     @Given("user without a team is logged in as player")
     public void user_without_a_team_is_logged_in_as_player() {
-        driver.get("http://127.0.0.1:5500/login/login-page.html");
-        loginPage.usernameInput.sendKeys("rscreas8");
-        loginPage.passwordInput.sendKeys("gMhQ8W5ZObv");
-        loginPage.loginButton.click();
+        driver.get("http://127.0.0.1:5500/register/register-page.html");
+
+        String randomUsername = UUID.randomUUID().toString();
+        registerPage.username.sendKeys(randomUsername);
+        registerPage.password.sendKeys("pass123");
+        registerPage.submitBtn.click();
+        HelperFunctions.alertWait(driver).accept();
     }
 
     @Given("user clicks Team Applications button")

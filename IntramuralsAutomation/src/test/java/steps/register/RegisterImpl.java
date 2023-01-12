@@ -38,7 +38,6 @@ public class RegisterImpl {
     public void user_types_in_a_new_username() {
 
         String randomString = UUID.randomUUID().toString();
-        System.out.println(randomString);
         registerPage.username.sendKeys(randomString);
 
     }

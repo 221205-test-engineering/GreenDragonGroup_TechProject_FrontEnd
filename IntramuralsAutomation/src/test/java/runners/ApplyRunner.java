@@ -15,6 +15,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
         glue = "steps.apply")
 public class ApplyRunner {
     public static WebDriver driver;
+
+    public static RegisterPage registerPage;
     public static LoginPage loginPage;
     public static HomePage homePage;
     public static TeamApplicationPage teamApplicationPage;
@@ -23,7 +25,7 @@ public class ApplyRunner {
     public static void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
-
+        registerPage = new RegisterPage(driver);
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         teamApplicationPage = new TeamApplicationPage(driver);
