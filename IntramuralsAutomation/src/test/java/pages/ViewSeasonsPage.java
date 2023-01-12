@@ -15,7 +15,6 @@ public class ViewSeasonsPage {
 
     @FindBy(xpath = "//td[contains(text(), 'Fall 2022 Regular Season Basketball')]")
     public WebElement season1;
-
     @FindBy(xpath = "//td[contains(text(), 'Fall 2022 Regular Season Softball')]")
     public WebElement season2;
     @FindBy(xpath = "//td[contains(text(), 'Hopping for a Cure Charity Tournament')]")
