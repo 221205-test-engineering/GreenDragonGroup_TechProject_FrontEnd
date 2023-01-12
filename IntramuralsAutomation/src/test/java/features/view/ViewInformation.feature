@@ -1,7 +1,7 @@
 Feature: View Information
 
   Scenario Outline: View all the games
-    Given user is logged in using "<username>" and <"password"> as login credentials
+    Given user is logged in using "<username>" and "<password>" as login credentials
     When user clicks Game button
     Then user should see the details of all the games
     # no games are displayed
@@ -15,7 +15,7 @@ Feature: View Information
 
 
   Scenario Outline: View all the seasons
-    Given user is logged in using "<username>" and <"password"> as login credentials
+    Given user is logged in using "<username>" and "<password>" as login credentials
     When user clicks View Seasons button
     Then user should see the season names
     # able to see all seasons
@@ -28,7 +28,7 @@ Feature: View Information
       | eegdell0   | DyAU3y5hLA|
 
   Scenario Outline: View all the venues
-    Given user is logged in using "<username>" and <"password"> as login credentials
+    Given user is logged in using "<username>" and "<password>" as login credentials
     When user clicks View Venues button
     Then user should see the venue names
     # able to see all venues
@@ -41,7 +41,7 @@ Feature: View Information
       | eegdell0   | DyAU3y5hLA|
 
   Scenario Outline: View all the schedules
-    Given user is logged in using "<username>" and <"password"> as login credentials
+    Given user is logged in using "<username>" and "<password>" as login credentials
     When user is on their homepage
     Then user should see a button to View the Schedule
     # no such button

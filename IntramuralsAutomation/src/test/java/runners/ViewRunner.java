@@ -11,19 +11,33 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features =
-        {
-                "<Enter path to feature file here>",
-                "<Enter path to another feature file here>"
-        }, glue = "steps")
+@CucumberOptions(features = "src/test/java/features/view",
+        glue = "steps.view")
 public class ViewRunner {
 
     public static WebDriver driver;
+    public static LoginPage loginPage;
+    public static HomePage homePage;
+    public static TeamApplicationPage teamApplicationPage;
+    public static ViewVenuesPage viewVenuesPage;
+    public static ViewSeasonsPage viewSeasonsPage;
+    public static ViewTeamPage viewTeamPage;
+    public static GamesPage gamesPage;
+
+
 
     @BeforeClass
     public static void setup() {
         WebDriverManager.chromedriver().setup();
         driver = new ChromeDriver();
+
+        loginPage = new LoginPage(driver);
+        homePage = new HomePage(driver);
+        viewVenuesPage = new ViewVenuesPage(driver);
+        viewSeasonsPage = new ViewSeasonsPage(driver);
+        viewTeamPage = new ViewTeamPage(driver);
+        teamApplicationPage = new TeamApplicationPage(driver);
+        gamesPage = new GamesPage(driver);
     }
 
     @AfterClass
