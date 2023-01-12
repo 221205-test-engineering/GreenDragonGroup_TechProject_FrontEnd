@@ -18,4 +18,7 @@ public class GamesPage {
 
     @FindBy(xpath = "//tbody/tr")
     public static List<WebElement> games;
+
+    @FindBy(xpath = "//tbody/tr[16]")
+    public WebElement lastGame;
 }

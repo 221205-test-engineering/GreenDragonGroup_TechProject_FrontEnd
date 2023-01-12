@@ -28,4 +28,6 @@ public class RegisterPage {
     @FindBy(xpath = "//input[6]")
     public WebElement showBio;
 
+    @FindBy(xpath = "//form/button")
+    public WebElement submitBtn;
 }
