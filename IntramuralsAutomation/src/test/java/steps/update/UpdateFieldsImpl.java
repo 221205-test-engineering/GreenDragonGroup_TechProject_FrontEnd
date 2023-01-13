@@ -4,16 +4,14 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
-import org.openqa.selenium.Alert;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.*;
 import pages.EditProfilePage;
 import pages.HomePage;
 import pages.LoginPage;
 import runners.UpdateRunner;
 
 import static helperfunctions.HelperFunctions.*;
+import static org.junit.Assert.fail;
 
 public class UpdateFieldsImpl {
 
@@ -24,7 +22,6 @@ public class UpdateFieldsImpl {
     public HomePage homePage = new HomePage(driver);
     public EditProfilePage editProfilePage = new EditProfilePage(driver);
 
-    public static boolean biometricvalue = false;
 
     @Given("user is logged in as {string} with {string} username and {string} password")
     public void user_is_logged_in_as_with_username_and_password(String string, String string2, String string3) {
@@ -46,8 +43,8 @@ public class UpdateFieldsImpl {
         standardWait(driver, editProfilePage.submitButton);
         System.out.println("edit profile page submit button should be visible");
     }
-    @When("user enters {string} in {string} field")
-    public void user_enters_in_field(String string, String string2) {
+    @When("user enters {string} valid data in {string} field")
+    public void user_enters_valid_data_in_field(String string, String string2) {
 
         //have  editProfilePage POM return a list of elements then iterate for one that matches string2
 
@@ -55,14 +52,15 @@ public class UpdateFieldsImpl {
         string2 = "//input[@name='" + string2 + "']";
         WebElement inputField = driver.findElement(By.xpath(string2));
         if(string2.contains("biometrics")){
-            biometricvalue = inputField.isSelected();
+            Boolean biometricvalue = inputField.isSelected();
             System.out.println("checkbox value is " + String.valueOf(biometricvalue));
             inputField.click();
             Boolean newVal = inputField.isSelected();
             System.out.println("checkbox value is " + String.valueOf(newVal));
             //can have a slight timeout if flaky
-            if(biometricvalue == inputField.isSelected()){
-                Assert.fail(); // the checkbox should have updated to a different value
+            if(biometricvalue.equals(inputField.isSelected())){
+                System.out.println("fails because inside if statement");
+                fail(); // the checkbox should have updated to a different value
             }
         } else {
             inputField.clear();
@@ -70,8 +68,10 @@ public class UpdateFieldsImpl {
         }
     }
     @When("user clicks the submit button")
-    public void user_clicks_the_submit_button() {
+    public void user_clicks_the_submit_button() throws InterruptedException {
+        Thread.sleep(700);
         editProfilePage.submitButton.click();
+        System.out.println("made it through the submit click");
     }
 
     @Then("an alert appears to confirm user information update")
@@ -92,7 +92,7 @@ public class UpdateFieldsImpl {
     }
     @Then("default value {string} is reset in {string} field")
     public void default_value_is_reset_in_field(String string, String string2) {
-        if(string2 != "biometrics") {
+        if(!string2.equals("biometrics")) {
             string2 = "//input[@name='" + string2 + "']";
             WebElement inputField = driver.findElement(By.xpath(string2));
             inputField.clear();
@@ -101,29 +101,58 @@ public class UpdateFieldsImpl {
         editProfilePage.submitButton.click();
         alertWait(driver).accept(); // accept confirmation alert
         alertWait(driver).accept(); // accept success alert
-        Assert.assertTrue(true); // test passes since this step was successfuly reached through previous step
     }
 
 
     // invalid inputs specific steps
-    @Then("no alert appears to confirm user update")
-    public void no_alert_appears_to_confirm_user_update() {
-        try{
-            Alert a = alertWait(driver);
-            if(a.getText().contains("Are you sure")) {
-                Assert.fail(); //confirmation alert should not have appeared
-            } else if (a == null) {
-                throw new RuntimeException("No alert appeared");
-            } else
-                throw new Exception("unexpected type of alert present"); // in case a later invalid input alert gets added by the devs
-            } catch (RuntimeException e){
 
-                Assert.assertTrue(true);//no alert appeared within timeout limit - updates correctly not allowed
-        } catch (Exception e) {
-            System.out.println("an unexpected alert was present");
-            e.printStackTrace();
-            Assert.fail();
+    @When("user enters {string} invalid data in {string} field")
+    public void user_enters_invalid_data_in_field(String string, String string2) {
+        //have  editProfilePage POM return a list of elements then iterate for one that matches string2?
+
+        //or add string 2 to an xpath string to dynamically select the element
+        String invalidStringInput = string;
+        string2 = "//input[@name='" + string2 + "']";
+        WebElement inputField = driver.findElement(By.xpath(string2));
+        inputField.clear();
+        inputField.sendKeys(string);
+
+        System.out.println("the current value of the input is : " + inputField.getAttribute("value") );
+        System.out.println("Comparing input and current value - invalid input = " + invalidStringInput + ", current field value is : " + inputField.getAttribute("value") );
+        if(inputField.getAttribute("value").equals(invalidStringInput)){
+            System.out.println("inside fail block IF");
+            fail(); //invalid elements were successfully input
         }
+    }
+    @Then("no invalid characters are accepted in {string} field")
+    public void no_invalid_characters_are_accepted_in_field(String string){
+        Boolean alertValue = false;
+        if(alertWait(driver)!=null){
+            alertValue = true;
+            driver.switchTo().alert().dismiss();
+        }
+        string = "//input[@name='" + string + "']";
+        WebElement inputField = driver.findElement(By.xpath(string));
+
+        System.out.println(" before try block");
+       try{
+           System.out.println("inside try block");
+           int testIfInt = Integer.parseInt(inputField.getAttribute("value"));
+           System.out.println("after test int");
+           if(testIfInt > 0) {
+               System.out.println("test int > 0");
+               Assert.assertTrue(true); //invalid characters not accepted and no negative numbers
+           } else {
+               fail(); //negative numbers should be disallowed
+           }
+       } catch (NumberFormatException e) {
+           e.printStackTrace();
+           if(alertValue==true){ //if illegal char entered AND alert appeared
+               fail(); //alert should not appear with illegal chars
+           } else {
+               Assert.assertTrue(true); //illegal chars prevented successful update even if entered
+           }
+       }
     }
 
 }
