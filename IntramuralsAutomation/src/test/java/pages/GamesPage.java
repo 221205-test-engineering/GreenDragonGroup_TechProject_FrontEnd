@@ -17,8 +17,23 @@ public class GamesPage {
     }
 
     @FindBy(xpath = "//tbody/tr")
-    public static List<WebElement> games;
+    public List<WebElement> games;
 
     @FindBy(xpath = "//tbody/tr[16]")
     public WebElement lastGame;
+
+    @FindBy(xpath = "//tbody/tr//td[8]")
+    public List<WebElement> homeScores;
+
+    @FindBy(xpath = "//tbody/tr//td[9]")
+    public List<WebElement> homeFouls;
+
+    @FindBy(xpath = "//tbody/tr//td[10]")
+    public List<WebElement> awayScores;
+
+    @FindBy(xpath = "//tbody/tr//td[11]")
+    public List<WebElement> awayFouls;
+
+    @FindBy(xpath = "//a")
+    public WebElement backButton;
 }

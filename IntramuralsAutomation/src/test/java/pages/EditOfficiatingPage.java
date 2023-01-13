@@ -16,14 +16,17 @@ public class EditOfficiatingPage
     }
 
     @FindBy(name = "registerGameId")
-    public static WebElement registerInput;
+    public WebElement registerInput;
 
     @FindBy(name = "removeGameId")
-    public static WebElement removeInput;
+    public WebElement removeInput;
 
     @FindBy(xpath = "//form[1]//button")
-    public static WebElement registerButton;
+    public WebElement registerButton;
 
     @FindBy(xpath = "//form[2]//button")
-    public static WebElement removeButton;
+    public WebElement removeButton;
+
+    @FindBy(xpath = "//a")
+    public WebElement backButton;
 }

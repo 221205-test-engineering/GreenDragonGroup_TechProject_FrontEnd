@@ -16,10 +16,10 @@ public class AddSeasonPage
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "td")
+    @FindBy(xpath = "//td")
     public static List<WebElement> seasons;
 
-    @FindBy(xpath = "input")
+    @FindBy(xpath = "//input")
     public static WebElement seasonNameInput;
 
     @FindBy(xpath = "//button[contains(text(),'Submit')]")

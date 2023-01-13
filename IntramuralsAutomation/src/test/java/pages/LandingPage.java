@@ -10,8 +10,15 @@ public class LandingPage {
 
     public WebDriver driver;
 
-    public LandingPage(WebDriver driver) {
+    public LandingPage(WebDriver driver)
+    {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+    @FindBy(xpath = "//a[1]")
+    public WebElement loginButton;
+
+    @FindBy(xpath = "//a[2]")
+    public WebElement registerButton;
 }

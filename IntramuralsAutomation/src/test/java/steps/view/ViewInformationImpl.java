@@ -47,7 +47,6 @@ public class ViewInformationImpl {
         assertEquals(16, totalGames);
     }
 
-
     @When("user clicks View Seasons button")
     public void user_clicks_view_seasons_button() {
         HelperFunctions.standardWait(driver, homePage.viewSeasonsButton);
