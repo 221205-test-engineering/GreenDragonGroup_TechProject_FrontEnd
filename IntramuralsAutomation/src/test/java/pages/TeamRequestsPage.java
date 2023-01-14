@@ -3,6 +3,7 @@ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import java.util.List;
@@ -14,6 +15,32 @@ public class TeamRequestsPage {
         this.driver = driver;
         PageFactory.initElements(driver, this);
     }
+
+
+
+    @FindBy(xpath = "//tbody//tr")
+    public List<WebElement> allRows;
+
+    @FindBy(xpath = "//tbody//tr[last()]")
+    public WebElement lastRow;
+
+    @FindBy(xpath = "//button[contains(text(),'Approve')]/../preceding-sibling::td[2]")
+    public List<WebElement> requesterIds;
+
+
+    @FindAll(@FindBy(xpath = "//td[3][contains(text(), 'accepted')]"))
+    public List<WebElement> acceptedRequests;
+
+
+
+    @FindBy(xpath = "//td[3][contains(text(), 'denied')]")
+    public List<WebElement> deniedRequests;
+
+    @FindBy(xpath = "//td[3][contains(text(), 'pending')]")
+    public List<WebElement> pendingRequests;
+
+    @FindBy(xpath = "//td[3]")
+    public List<WebElement> allRequests;
 
     @FindBy(xpath = "//a[contains(text(), 'Back')]")
     public WebElement backButton;

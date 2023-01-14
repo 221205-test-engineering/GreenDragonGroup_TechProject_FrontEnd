@@ -6,14 +6,9 @@ import io.cucumber.java.en.When;
 import org.junit.Assert;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import pages.HomePage;
-import pages.LandingPage;
 import pages.LoginPage;
 import runners.LoginRunner;
-
-import java.time.Duration;
 
 import static helperfunctions.HelperFunctions.standardWait;
 import static helperfunctions.HelperFunctions.waitElemDisappear;
@@ -47,7 +42,6 @@ public class LoginImpl {
     @Then("user is on the {string} homepage")
     public void user_is_on_the_homepage(String string) {
         standardWait(driver, homePage.userRoleH1);
-        System.out.println("The page h1 tag is : " + homePage.userRoleH1.getText());
         Assert.assertEquals(string, homePage.userRoleH1.getText());
     }
 
@@ -63,9 +57,8 @@ public class LoginImpl {
     public void user_remains_on_login_page() {
         try {
             waitElemDisappear(driver, loginPage.loginButton);
-            Assert.fail(); // login button should not disappear if user remains on same page
+            Assert.fail("login button should not disappear if user remains on the login page");
         }catch(TimeoutException e){
-            System.out.println("Wait timeout reached for no new page to load");
             Assert.assertTrue(true); // invalid inputs should result in no new page
         }
     }

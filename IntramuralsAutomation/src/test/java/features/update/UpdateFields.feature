@@ -12,12 +12,12 @@ Feature: Update user fields
 
     Examples:
       |newValidData    | defaultvalue| targetfield  |userrole  |username      |password     |
-      |jellybean       | pass123      |password     |player    |Bobby202      |pass123      |
+      |gorilla         | pass123      |password     |player    |Bobby202      |pass123      |
       |635             | 55           |height       |player    |Bobby202      |pass123      |
       |444             | 150          |weight       |player    |Bobby202      |pass123      |
       |validUrl        | noUrl        |picture      |player    |Bobby202      |pass123      |
       |                |              |biometrics   |player    |Bobby202      |pass123      |
-      |jellybean       | pass123      |password     |ref       |mandy101      |pass123      |
+      |jupiter         | pass123      |password     |ref       |mandy101      |pass123      |
       |635             | 66           | height      |ref       |mandy101      |pass123      |
       |444             | 160          |weight       |ref       |mandy101      |pass123      |
       |validUrl        | oldUrl       |picture      |ref       |mandy101      |pass123      |

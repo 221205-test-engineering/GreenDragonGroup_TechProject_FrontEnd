@@ -16,8 +16,6 @@ Feature: login positive and negative
       |mandy101   | pass123  | Referee Page |
       |gatorFan99 | chomp!!  | Admin Page   |
 
-
-
     #Negative test1
   Scenario Outline: login with incorrect or empty password for a variety of users
     When user enters a valid "<username>" username
@@ -48,5 +46,4 @@ Feature: login positive and negative
       |wrongadmin     | chomp!!     |
       |               | pass123     |
       |               | chomp!!     |
-
 
