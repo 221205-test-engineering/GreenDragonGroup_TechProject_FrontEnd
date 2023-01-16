@@ -1,15 +1,20 @@
 package pages;
 
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class ManageUserRolesPage
 {
     public WebDriver driver;
+    public List<List<WebElement>> table;
+    public List<WebElement> row;
 
     public ManageUserRolesPage(WebDriver driver)
     {
@@ -17,18 +22,20 @@ public class ManageUserRolesPage
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//tbody//tr//td[1]")
-    public static List<WebElement> userIDs;
+    @FindBy(xpath = "//tbody//tr")
+    public List<WebElement> users;
 
-    @FindBy(xpath = "//tbody//tr//td[2]")
-    public static List<WebElement> usernames;
+    @FindBy(xpath = "//a")
+    public WebElement backButton;
 
-    @FindBy(xpath = "//tbody//tr//td[3]")
-    public static List<WebElement> userRoles;
+    public void initializeTable()
+    {
+        table = new ArrayList<List<WebElement>>();
 
-    @FindBy(xpath = "//tbody//tr//td[4]")
-    public static List<WebElement> demoteButtons;
-
-    @FindBy(xpath = "//tbody//tr//td[5]")
-    public static List<WebElement> promoteButtons;
+        for (int rowIndex = 1; rowIndex <= users.size(); ++rowIndex)
+        {
+            row = driver.findElements(By.xpath("//tbody//tr[" + rowIndex + "]//td"));
+            table.add(row);
+        }
+    }
 }

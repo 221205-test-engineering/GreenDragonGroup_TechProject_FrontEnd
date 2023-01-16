@@ -4,7 +4,6 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import java.util.List;
 
 public class ScheduleGamePage
 {
@@ -16,30 +15,27 @@ public class ScheduleGamePage
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(name = "venue")
-    public static WebElement venueSelect;
+    @FindBy(xpath = "//fieldset[1]//select[1]")
+    public WebElement venueSelect;
 
-    @FindBy(name = "time")
-    public static WebElement timeSelect;
+    @FindBy(xpath = "//input")
+    public WebElement timeSelect;
 
-    @FindBy(name = "season")
-    public static WebElement seasonSelect;
+    @FindBy(xpath = "//fieldset[2]//select[1]")
+    public WebElement seasonSelect;
 
-    @FindBy(name = "sport")
-    public static WebElement sportSelect;
+    @FindBy(xpath = "//fieldset[2]//select[2]")
+    public WebElement sportSelect;
 
-    @FindBy(name = "home")
-    public static WebElement homeSelect;
+    @FindBy(xpath = "//fieldset[3]//select[1]")
+    public WebElement homeSelect;
 
-    @FindBy(name = "away")
-    public static WebElement awaySelect;
+    @FindBy(xpath = "//fieldset[3]//select[2]")
+    public WebElement awaySelect;
 
-    @FindBy(name = "time")
-    public static WebElement dateInput;
+    @FindBy(xpath = "//button")
+    public WebElement scheduleButton;
 
-    @FindBy(xpath = "button")
-    public static WebElement scheduleButton;
-
-    @FindBy(xpath = "a")
-    public static WebElement backButton;
+    @FindBy(xpath = "//a")
+    public WebElement backButton;
 }

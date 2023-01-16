@@ -17,15 +17,15 @@ public class AddSeasonPage
     }
 
     @FindBy(xpath = "//td")
-    public static List<WebElement> seasons;
+    public List<WebElement> seasons;
 
     @FindBy(xpath = "//input")
-    public static WebElement seasonNameInput;
+    public WebElement seasonNameInput;
 
     @FindBy(xpath = "//button[contains(text(),'Submit')]")
-    public static WebElement submitButton;
+    public WebElement submitButton;
 
     @FindBy(xpath = "//a[contains(text(),'Back')]")
-    public static WebElement backButton;
+    public WebElement backButton;
 
 }
