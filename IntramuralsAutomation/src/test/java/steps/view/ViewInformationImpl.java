@@ -60,7 +60,6 @@ public class ViewInformationImpl {
         seasonsList.add(viewSeasonsPage.season1.getText());
         seasonsList.add(viewSeasonsPage.season2.getText());
         seasonsList.add(viewSeasonsPage.season3.getText());
-        System.out.println(seasonsList);
         String actualSeasons = seasonsList.toString();
         String expectedSeasons = "[Fall 2022 Regular Season Basketball, Fall 2022 Regular Season Softball, Hopping for a Cure Charity Tournament]";
 
@@ -68,97 +67,71 @@ public class ViewInformationImpl {
 
     }
 
-
     @When("user clicks View Venues button")
     public void user_clicks_view_venues_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        HelperFunctions.standardWait(driver, homePage.viewVenuesButton);
+        homePage.viewVenuesButton.click();
     }
     @Then("user should see the venue names")
     public void user_should_see_the_venue_names() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        HelperFunctions.standardWait(driver, viewVenuesPage.venue1);
+
+        List<String> venueList = new ArrayList<>();
+
+        venueList.add(viewVenuesPage.venue1.getText());
+        venueList.add(viewVenuesPage.venue2.getText());
+        venueList.add(viewVenuesPage.venue3.getText());
+        venueList.add(viewVenuesPage.venue4.getText());
+        venueList.add(viewVenuesPage.venue5.getText());
+        String actualVenues = venueList.toString();
+        String expectedVenues = "[Main Campus Gym: Court 1, Main Campus Gym: Court 2, Main Campus Gym: Court 3, Satellite Campus Gym: Smith Field, Satellite Campus Gym: Lee Field]";
+        assertEquals(expectedVenues, actualVenues);
+
     }
 
-
-
-    @When("user is on their homepage")
-    public void user_is_on_their_homepage() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+    @Then("user should see schedules for all the games")
+    public void user_should_see_schedules_for_all_the_games() {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.visibilityOf(gamesPage.lastGame));
+        int totalDates = gamesPage.gameDates.size();
+        assertEquals(16, totalDates);
     }
-    @Then("user should see a button to View the Schedule")
-    public void user_should_see_a_button_to_view_the_schedule() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
 
     @Given("user is logged in as player")
     public void user_is_logged_in_as_player() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        driver.get("http://127.0.0.1:5500/login/login-page.html");
+        loginPage.usernameInput.sendKeys("eegdell0");
+        loginPage.passwordInput.sendKeys("DyAU3y5hLA");
+        loginPage.loginButton.click();
     }
     @When("user clicks the Team Applications button")
     public void user_clicks_the_team_applications_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        HelperFunctions.standardWait(driver, homePage.teamApplicationButton);
+        homePage.teamApplicationButton.click();
     }
+
+    List<String> captainList = new ArrayList<>();
     @When("user clicks See The Captain button")
     public void user_clicks_see_the_captain_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("user should see the captain of the team")
-    public void user_should_see_the_captain_of_the_team() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+        HelperFunctions.standardWait(driver, teamApplicationPage.seeCaptainBtn1);
 
+        teamApplicationPage.seeCaptainBtn1.click();
+        HelperFunctions.standardWait(driver, teamApplicationPage.team1Captain);
+        captainList.add(teamApplicationPage.team1Captain.getText());
 
-    @Given("user is logged in as referee")
-    public void user_is_logged_in_as_referee() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @When("user is on the referee homepage")
-    public void user_is_on_the_referee_homepage() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("they should see a button to view Team information")
-    public void they_should_see_a_button_to_view_team_information() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+        teamApplicationPage.seeCaptainBtn2.click();
+        HelperFunctions.standardWait(driver, teamApplicationPage.team2Captain);
+        captainList.add(teamApplicationPage.team2Captain.getText());
 
-    @Given("user is logged in as admin")
-    public void user_is_logged_in_as_admin() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        teamApplicationPage.seeCaptainBtn3.click();
+        HelperFunctions.standardWait(driver, teamApplicationPage.team3Captain);
+        captainList.add(teamApplicationPage.team3Captain.getText());
     }
-    @When("user is on the admin homepage")
-    public void user_is_on_the_admin_homepage() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
+    @Then("user should see the captain of each team")
+    public void user_should_see_the_captain_of_each_team() {
 
-
-
-    @Given("user is logged in as captain")
-    public void user_is_logged_in_as_captain() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
+        String expectedCapList = "[Username: Bobby202, Username: Candice202, Username: Jessika202]";
+        String actualCapList = captainList.toString();
+        assertEquals( expectedCapList,actualCapList );
     }
-    @When("user clicks the View Your Team button")
-    public void user_clicks_the_view_your_team_button() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-    @Then("user should see the captain of the teams")
-    public void user_should_see_the_captain_of_the_teams() {
-        // Write code here that turns the phrase above into concrete actions
-        throw new io.cucumber.java.PendingException();
-    }
-
 }

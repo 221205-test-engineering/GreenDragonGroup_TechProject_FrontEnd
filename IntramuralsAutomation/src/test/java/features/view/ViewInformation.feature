@@ -4,7 +4,7 @@ Feature: View Information
     Given user is logged in using "<username>" and "<password>" as login credentials
     When user clicks Game button
     Then user should see the details of all the games
-    # no games are displayed
+    # able to see all the games
 
     Examples:
       | username   | password  |
@@ -42,9 +42,9 @@ Feature: View Information
 
   Scenario Outline: View all the schedules
     Given user is logged in using "<username>" and "<password>" as login credentials
-    When user is on their homepage
-    Then user should see a button to View the Schedule
-    # no such button
+    When user clicks Game button
+    Then user should see schedules for all the games
+    # able to see in the View Game page
 
     Examples:
       | username   | password  |
@@ -57,27 +57,30 @@ Feature: View Information
     Given user is logged in as player
     When user clicks the Team Applications button
     And user clicks See The Captain button
-    Then user should see the captain of the team
+    Then user should see the captain of each team
     # able to see all team's captains
 
-  Scenario: View the Captains of each team as referee
-    Given user is logged in as referee
-    When user is on the referee homepage
-    Then they should see a button to view Team information
-    # nowhere to see captains
+
+#  FEATURE NOT YET IMPLEMENTED
+#  Scenario: View the Captains of each team as captain
+#    Given user is logged in as captain
+#    When user is on the captain homepage
+#    Then they should see a button to view Team players information
 
 
-  Scenario: View the Captains of each team as admin
-    Given user is logged in as admin
-    When user is on the admin homepage
-    Then they should see a button to view Team information
-    # nowhere to see captains
 
-  Scenario: View the Captains of each team as captain
-    Given user is logged in as captain
-    When user clicks the View Your Team button
-    Then user should see the captain of the teams
-    # can only see captain of own team
+#  FEATURE NOT YET IMPLEMENTED
+#  Scenario: View the Captains of each team as referee
+#    Given user is logged in as referee
+#    When user is on the referee homepage
+#    Then they should see a button to view Team players information
+
+#  FEATURE NOT YET IMPLEMENTED
+#  Scenario: View the Captains of each team as admin
+#    Given user is logged in as admin
+#    When user is on the admin homepage
+#    Then they should see a button to view Team players information
+
 
 
 
