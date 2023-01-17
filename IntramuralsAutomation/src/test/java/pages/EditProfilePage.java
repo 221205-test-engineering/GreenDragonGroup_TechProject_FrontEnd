@@ -14,26 +14,24 @@ public class EditProfilePage {
         PageFactory.initElements(driver, this);
     }
 
-    @FindBy(xpath = "//input[name='username']")
+    @FindBy(xpath = "//input[1]")
     public WebElement usernameInput;
 
-    @FindBy(xpath = "//input[name='password']")
+    @FindBy(xpath = "//input[2]")
     public WebElement passwordInput;
 
-    @FindBy(xpath = "//input[name='height']")
+    @FindBy(xpath = "//input[3]")
     public WebElement heightInput;
 
-    @FindBy(xpath = "//input[name='weight']")
+    @FindBy(xpath = "//input[4]")
     public WebElement weightInput;
 
-    @FindBy(xpath = "//input[name='picture']")
+    @FindBy(xpath = "//input[5]")
     public WebElement pictureUrlInput;
 
-    @FindBy(xpath = "//input[name='biometrics']")
+    @FindBy(xpath = "//input[6]")
     public WebElement biometricsCheckbox;
 
-    @FindBy(xpath = "//button[contains(text(), 'Submit')]")
+    @FindBy(xpath = "//button")
     public WebElement submitButton;
-
-
 }

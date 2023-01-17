@@ -1,7 +1,6 @@
 Feature: Team Application
   Background:
-    Given user has not applied for a team
-    Given user is logged in as player
+    Given user without a team is logged in as player
     Given user clicks Team Applications button
 
   Scenario: Apply to join a team

@@ -6,6 +6,9 @@ import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import pages.EditProfilePage;
+import pages.HomePage;
+import pages.LoginPage;
 import pages.RegisterPage;
 import helperfunctions.HelperFunctions;
 import runners.RegisterRunner;
@@ -22,6 +25,9 @@ import static org.junit.Assert.assertTrue;
 public class RegisterImpl {
     public WebDriver driver = RegisterRunner.driver;
     public RegisterPage registerPage = RegisterRunner.registerPage;
+    public LoginPage loginPage = RegisterRunner.loginPage;
+    public HomePage homePage = RegisterRunner.homePage;
+    public EditProfilePage editProfilePage = RegisterRunner.editProfilePage;
 
 
     @Given("user is on the registration page")
@@ -74,9 +80,7 @@ public class RegisterImpl {
         assertEquals("Registration successful!", alertMsg);
     }
 
-
     // need to delete the user with blank username in DB for this test
-    // Suggested fix: Have the user change username to a random string after this test suite is completed.
     @When("user types in password with pass123 and leaves username blank")
     public void user_types_in_password_with_pass123_and_leaves_username_blank() {
         HelperFunctions.standardWait(driver, registerPage.password);
@@ -85,9 +89,9 @@ public class RegisterImpl {
 
 
     @Then("No success message should be shown")
-    public void no_success_message_should_be_shown() {
+    public void no_success_message_should_be_shown()
+    {
         boolean noAlert = false;
-        System.exit(0);
         try{
             HelperFunctions.alertWait(driver).accept();
         }catch  (TimeoutException e){
