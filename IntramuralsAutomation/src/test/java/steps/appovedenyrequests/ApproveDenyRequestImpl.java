@@ -74,7 +74,6 @@ public class ApproveDenyRequestImpl {
         } else {
             fail("Number of pending requests is 0. Insufficient data for trial");
         }
-
     }
 
     @Then("an alert appears to confirm request approval")
