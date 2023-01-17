@@ -11,7 +11,7 @@ import java.util.Map;
 
 public class HelperFunctions {
     public static void standardWait(WebDriver driver, WebElement elem) {
-        new FluentWait<WebDriver>(driver).withTimeout(Duration.ofMillis(6000))
+        new FluentWait<WebDriver>(driver).withTimeout(Duration.ofMillis(15000))
                 .ignoring(NoSuchElementException.class).ignoring(StaleElementReferenceException.class)
                 .until(ExpectedConditions.refreshed(ExpectedConditions.visibilityOf(elem)));
     }

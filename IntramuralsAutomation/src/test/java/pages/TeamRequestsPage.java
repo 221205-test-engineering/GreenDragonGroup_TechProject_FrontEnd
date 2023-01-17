@@ -35,7 +35,6 @@ public class TeamRequestsPage {
     public List<WebElement> acceptedRequests;
 
 
-
     @FindBy(xpath = "//td[3][contains(text(), 'denied')]")
     public List<WebElement> deniedRequests;
 
@@ -45,8 +44,6 @@ public class TeamRequestsPage {
     @FindBy(xpath = "//td[3]")
     public List<WebElement> allRequests;
 
-    @FindBy(xpath = "//a[contains(text(), 'Back')]")
-    public WebElement backButton;
 
     @FindBy(xpath = "//button[contains(text(), 'Approve')]")
     public WebElement approveButton;
@@ -57,5 +54,4 @@ public class TeamRequestsPage {
     @FindBy(xpath = "//a[contains(text(), 'See The Player')]")
     public WebElement seePlayerButton;
 
->>>>>>> 42c43e8e0e6e410cdf66483d1747736de9a1387c
 }

@@ -31,7 +31,7 @@ public class ApproveDenyRequestImpl {
     public void user_is_on_the_captain_homepage() {
         driver.get("http://127.0.0.1:5500/login/login-page.html");
         standardWait(driver, loginPage.loginButton);
-        loginPage.usernameInput.sendKeys("Bobby202");
+        loginPage.usernameInput.sendKeys("Candice202");
         loginPage.passwordInput.sendKeys("pass123");
         loginPage.loginButton.click();
         standardWait(driver, homePage.userRoleH1);

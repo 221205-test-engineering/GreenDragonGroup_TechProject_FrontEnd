@@ -1,7 +1,5 @@
 package steps.scorecardediting;
 
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.FluentWait;
 import pages.*;
 import runners.ScorecardEditingRunner;
 import helperfunctions.*;
@@ -10,9 +8,6 @@ import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import static org.junit.Assert.*;
-
-import java.time.Duration;
-import java.util.List;
 
 public class EditScorecardImpl
 {
