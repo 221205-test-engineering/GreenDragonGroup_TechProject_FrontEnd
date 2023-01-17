@@ -38,5 +38,5 @@ public class GamesPage {
     public WebElement backButton;
 
     @FindBy(xpath = "//td[2]")
-    public static List<WebElement> gameDates;
+    public List<WebElement> gameDates;
 }

@@ -18,6 +18,7 @@ public class ApplyRunner {
     public static LoginPage loginPage;
     public static HomePage homePage;
     public static TeamApplicationPage teamApplicationPage;
+    public static TeamRequestsPage teamRequestsPage;
 
     @BeforeClass
     public static void setup() {
@@ -27,6 +28,7 @@ public class ApplyRunner {
         loginPage = new LoginPage(driver);
         homePage = new HomePage(driver);
         teamApplicationPage = new TeamApplicationPage(driver);
+        teamRequestsPage = new TeamRequestsPage(driver);
     }
 
     @AfterClass
