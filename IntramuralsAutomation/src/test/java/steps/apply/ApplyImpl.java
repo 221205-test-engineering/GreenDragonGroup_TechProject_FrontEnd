@@ -2,62 +2,49 @@ package steps.apply;
 
 import helperfunctions.HelperFunctions;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
+
 import pages.*;
 import runners.ApplyRunner;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import static org.junit.Assert.assertEquals;
-
-import java.time.Duration;
+import java.util.UUID;
 
 public class ApplyImpl {
 
     public WebDriver driver = ApplyRunner.driver;
-
+    public RegisterPage registerPage = ApplyRunner.registerPage;
     public LoginPage loginPage = ApplyRunner.loginPage;
     public TeamApplicationPage teamApplicationPage = ApplyRunner.teamApplicationPage;
     public HomePage homePage = ApplyRunner.homePage;
-    public TeamRequestsPage teamRequestsPage = ApplyRunner.teamRequestsPage;
 
-    @Given("user has not applied for a team")
-    public void userHasNotAppliedForATeam() throws InterruptedException
-    {
-        driver.get("http://127.0.0.1:5500/login/login-page.html");
-        loginPage.usernameInput.sendKeys("Candice202");
-        loginPage.passwordInput.sendKeys("pass123");
-        loginPage.loginButton.click();
+//    public TeamRequestsPage teamRequestsPage = ApplyRunner.teamRequestsPage;
 
-        HelperFunctions.standardWait(driver, homePage.approveDenyRequestsButton);
-        homePage.approveDenyRequestsButton.click();
+//    @Given("user is logged in as player")
+//    public void user_is_logged_in_as_player()
+//    {
+//        driver.get("http://127.0.0.1:5500/login/login-page.html");
+//        loginPage.usernameInput.sendKeys("eegdell0");
+//        loginPage.passwordInput.sendKeys("DyAU3y5hLA");
+//        loginPage.loginButton.click();
 
-        HelperFunctions.standardWait(driver, teamRequestsPage.backButton);
-        Thread.sleep(5000);
+    // must use a user without a team/ who have not applied to a team
+    @Given("user without a team is logged in as player")
+    public void user_without_a_team_is_logged_in_as_player() {
+        driver.get("http://127.0.0.1:5500/register/register-page.html");
 
-        for (WebElement denyButton : teamRequestsPage.denyButtons)
-        {
-            denyButton.click();
-        }
-
-        teamRequestsPage.backButton.click();
-
-        HelperFunctions.standardWait(driver, homePage.logoutButton);
-        homePage.logoutButton.click();
-        Thread.sleep(2000);
-    }
-
-    @Given("user is logged in as player")
-    public void user_is_logged_in_as_player()
-    {
-        driver.get("http://127.0.0.1:5500/login/login-page.html");
-        loginPage.usernameInput.sendKeys("eegdell0");
-        loginPage.passwordInput.sendKeys("DyAU3y5hLA");
-        loginPage.loginButton.click();
+        String randomUsername = UUID.randomUUID().toString();
+        registerPage.username.sendKeys(randomUsername);
+        registerPage.password.sendKeys("pass123");
+        registerPage.submitBtn.click();
+        HelperFunctions.alertWait(driver).accept();
     }
 
     @Given("user clicks Team Applications button")

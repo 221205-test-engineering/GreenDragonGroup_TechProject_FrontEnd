@@ -16,7 +16,6 @@ public class EditScorecardImpl
 	HomePage homePage = ScorecardEditingRunner.homePage;
 	GamesPage gamesPage = ScorecardEditingRunner.gamesPage;
 	LandingPage landingPage = ScorecardEditingRunner.landingPage;
-
 	OfficiateGamesPage officiateGamesPage = ScorecardEditingRunner.officiateGamesPage;
 	EditOfficiatingPage editOfficiatingPage = ScorecardEditingRunner.editOfficiatingPage;
 
