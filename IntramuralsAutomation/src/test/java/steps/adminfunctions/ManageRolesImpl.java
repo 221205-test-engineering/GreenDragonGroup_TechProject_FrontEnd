@@ -53,9 +53,12 @@ public class ManageRolesImpl
 			List<WebElement> row = manageUserRolesPage.table.get(i);
 			if ((row.get(2).getText()).equals("player"))
 			{
-				searchIndex = i;
-				row.get(3).click();
-				break;
+				if (!(row.get(1).getText().equals("eegdell0")))
+				{
+					searchIndex = i;
+					row.get(3).click();
+					break;
+				}
 			}
 		}
 	}
@@ -81,9 +84,12 @@ public class ManageRolesImpl
 			List<WebElement> row = manageUserRolesPage.table.get(i);
 			if ((row.get(2).getText()).equals("player"))
 			{
-				searchIndex = i;
-				row.get(4).click();
-				break;
+				if (!(row.get(1).getText().equals("eegdell0")))
+				{
+					searchIndex = i;
+					row.get(4).click();
+					break;
+				}
 			}
 		}
 	}

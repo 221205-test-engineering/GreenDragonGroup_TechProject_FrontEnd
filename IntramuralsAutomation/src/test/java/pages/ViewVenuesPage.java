@@ -23,4 +23,6 @@ public class ViewVenuesPage {
     public WebElement venue4;
     @FindBy(xpath = "//td[contains(text(), 'Satellite Campus Gym: Lee Field')]")
     public WebElement venue5;
+    @FindBy(xpath = "//a")
+    public WebElement backButton;
 }

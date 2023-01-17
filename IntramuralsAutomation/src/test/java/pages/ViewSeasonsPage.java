@@ -19,6 +19,8 @@ public class ViewSeasonsPage {
     public WebElement season2;
     @FindBy(xpath = "//td[contains(text(), 'Hopping for a Cure Charity Tournament')]")
     public WebElement season3;
+    @FindBy(xpath = "//a")
+    public WebElement backButton;
 
 
 }

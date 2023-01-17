@@ -33,9 +33,11 @@ public class TeamApplicationPage {
     @FindBy(xpath = "//p[contains(text(), 'Jessika202')]")
     public WebElement team3Captain;
 
-    @FindBy(tagName = "select")
+    @FindBy(xpath = "//select")
     public WebElement teamMenu;
     @FindBy(xpath = "//div/button")
     public WebElement applyBtn;
+    @FindBy(xpath = "//a")
+    public WebElement backButton;
 
 }
