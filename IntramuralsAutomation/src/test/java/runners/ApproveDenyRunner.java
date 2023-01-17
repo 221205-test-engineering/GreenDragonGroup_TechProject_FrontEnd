@@ -11,11 +11,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features =
-        {
-                "<Enter path to feature file here>",
-                "<Enter path to another feature file here>"
-        }, glue = "steps")
+@CucumberOptions(features = "src/test/java/features/approvedenyrequests", glue = "steps/appovedenyrequests") //intentional non refactoring of misspelled folder name until after merge
 public class ApproveDenyRunner {
     public static WebDriver driver;
 

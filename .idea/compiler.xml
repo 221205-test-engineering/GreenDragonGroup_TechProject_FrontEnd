@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="IntramuralsAutomation" target="19" />
+      <module name="IntramuralsAutomation" target="18" />
     </bytecodeTargetLevel>
   </component>
 </project>

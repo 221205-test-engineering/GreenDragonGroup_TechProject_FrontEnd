@@ -14,6 +14,11 @@ public class HomePage {
         PageFactory.initElements(driver, this);
     }
 
+    //ONLY in Mark Local Changes right now//
+    @FindBy(xpath = "//h1")
+    public WebElement userRoleH1;
+    //Below this were in most recent push//
+
     @FindBy(xpath = "//a[contains(text(), 'Edit User Profile')]")
     public WebElement editProfileButton;
 
@@ -49,6 +54,8 @@ public class HomePage {
 
     @FindBy(xpath = "//a[contains(text(), 'Manage User Roles')]")
     public WebElement manageUserRolesButton;
+
+
 
 
     @FindBy(xpath = "//button[contains(text(), 'Logout')]")
