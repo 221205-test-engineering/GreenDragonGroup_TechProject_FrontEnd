@@ -104,8 +104,8 @@ public class ViewInformationImpl {
     @Given("user is logged in as player")
     public void user_is_logged_in_as_player() {
         driver.get("http://127.0.0.1:5500/login/login-page.html");
-        loginPage.usernameInput.sendKeys("eegdell0");
-        loginPage.passwordInput.sendKeys("DyAU3y5hLA");
+        loginPage.usernameInput.sendKeys("slafoy1");
+        loginPage.passwordInput.sendKeys("3hOS1nh");
         loginPage.loginButton.click();
     }
     @When("user clicks the Team Applications button")

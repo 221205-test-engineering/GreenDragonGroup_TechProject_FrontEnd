@@ -25,17 +25,6 @@ public class ApplyImpl {
     public TeamApplicationPage teamApplicationPage = ApplyRunner.teamApplicationPage;
     public HomePage homePage = ApplyRunner.homePage;
 
-//    public TeamRequestsPage teamRequestsPage = ApplyRunner.teamRequestsPage;
-
-//    @Given("user is logged in as player")
-//    public void user_is_logged_in_as_player()
-//    {
-//        driver.get("http://127.0.0.1:5500/login/login-page.html");
-//        loginPage.usernameInput.sendKeys("eegdell0");
-//        loginPage.passwordInput.sendKeys("DyAU3y5hLA");
-//        loginPage.loginButton.click();
-
-    // must use a user without a team/ who have not applied to a team
     @Given("user without a team is logged in as player")
     public void user_without_a_team_is_logged_in_as_player() {
         driver.get("http://127.0.0.1:5500/register/register-page.html");

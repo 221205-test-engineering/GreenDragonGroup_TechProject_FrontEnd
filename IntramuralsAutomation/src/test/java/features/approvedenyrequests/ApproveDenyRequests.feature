@@ -2,6 +2,7 @@ Feature: Captain can approve or deny requests for their teams
 
   #positive tests - that it works
   Scenario: Captain can approve a team request
+    Given there are pending requests
     Given user is on the captain homepage
     Then user should see an approve deny team requests link
     #edited text of above step to remove '/' from between approve and deny
@@ -12,6 +13,7 @@ Feature: Captain can approve or deny requests for their teams
     Then player request status shows approved
 
   Scenario: Captain can deny a team request
+    Given there are pending requests
     Given user is on the captain homepage
     Then user should see an approve deny team requests link
     When user clicks the approve deny team requests link

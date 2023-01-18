@@ -1,21 +1,24 @@
 package steps.appovedenyrequests;
 
+import helperfunctions.HelperFunctions;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.Assert;
+import org.openqa.selenium.By;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import pages.HomePage;
-import pages.LoginPage;
-import pages.TeamRequestsPage;
+import org.openqa.selenium.support.ui.Select;
+import pages.*;
 import runners.ApproveDenyRunner;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import static helperfunctions.HelperFunctions.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
 
 public class ApproveDenyRequestImpl {
@@ -24,7 +27,32 @@ public class ApproveDenyRequestImpl {
     public LoginPage loginPage = new LoginPage(driver);
     public HomePage homePage = new HomePage(driver);
     public TeamRequestsPage requestsPage = new TeamRequestsPage(driver);
+    public RegisterPage registerPage = new RegisterPage(driver);
+    public TeamApplicationPage teamApplicationPage = new TeamApplicationPage(driver);
     public static String updatedUser = ""; //used to check that correct user's request was updated as intended
+
+    @Given("there are pending requests")
+    public void thereArePendingRequests()
+    {
+        driver.get("http://127.0.0.1:5500/register/register-page.html");
+
+        String randomUsername = UUID.randomUUID().toString();
+        registerPage.username.sendKeys(randomUsername);
+        registerPage.password.sendKeys("pass123");
+        registerPage.submitBtn.click();
+        HelperFunctions.alertWait(driver).accept();
+
+        HelperFunctions.standardWait(driver, homePage.teamApplicationButton);
+        homePage.teamApplicationButton.click();
+
+        HelperFunctions.standardWait(driver, teamApplicationPage.teamMenu);
+        Select teamMenu = new Select(driver.findElement(By.tagName("select")));
+        teamMenu.selectByIndex(1);
+
+        teamApplicationPage.applyBtn.click();
+
+        HelperFunctions.alertWait(driver).accept();
+    }
 
     //no captain roles allowed in database. Significant defect but captain functionality exists for some users and will be tested
     @Given("user is on the captain homepage")
@@ -173,5 +201,4 @@ public class ApproveDenyRequestImpl {
             Assert.assertTrue(true); // passed, no element located
         }
     }
-
 }
