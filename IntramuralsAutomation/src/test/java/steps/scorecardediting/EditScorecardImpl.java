@@ -43,7 +43,7 @@ public class EditScorecardImpl
 
 		HelperFunctions.standardWait(driver, editOfficiatingPage.backButton);
 
-		editOfficiatingPage.registerInput.sendKeys("1");
+		editOfficiatingPage.registerInput.sendKeys("2");
 		editOfficiatingPage.registerButton.click();
 
 		Alert alert = HelperFunctions.alertWait(driver);
@@ -55,10 +55,10 @@ public class EditScorecardImpl
 
 		Thread.sleep(10000);
 
-		beforeData[0] = Integer.parseInt(gamesPage.homeScores.get(0).getText());
-		beforeData[1] = Integer.parseInt(gamesPage.homeFouls.get(0).getText());
-		beforeData[2] = Integer.parseInt(gamesPage.awayScores.get(0).getText());
-		beforeData[3] = Integer.parseInt(gamesPage.awayFouls.get(0).getText());
+		beforeData[0] = Integer.parseInt(gamesPage.homeScores.get(1).getText());
+		beforeData[1] = Integer.parseInt(gamesPage.homeFouls.get(1).getText());
+		beforeData[2] = Integer.parseInt(gamesPage.awayScores.get(1).getText());
+		beforeData[3] = Integer.parseInt(gamesPage.awayFouls.get(1).getText());
 
 		gamesPage.backButton.click();
 	}
@@ -74,7 +74,7 @@ public class EditScorecardImpl
 	public void userClicksOnUpdateScoresButtonForAGame() throws InterruptedException
 	{
 		Thread.sleep(2000);
-		officiateGamesPage.updateScoresButtons.get(0).click();
+		officiateGamesPage.updateScoresButtons.get(1).click();
 	}
 
 	@When("user clicks an add points button for the home team")
@@ -88,7 +88,7 @@ public class EditScorecardImpl
 	public void user_clicks_the_add_button_for_the_home_team() throws InterruptedException
 	{
 		Thread.sleep(2000);
-		officiateGamesPage.homeTeamAddButton.click();
+		officiateGamesPage.homeTeamAddButtons.get(0).click();
 	}
 
 	@When("user clicks an add points button for the away team")
@@ -102,7 +102,7 @@ public class EditScorecardImpl
 	public void user_clicks_the_add_button_for_the_away_team() throws InterruptedException
 	{
 		Thread.sleep(2000);
-		officiateGamesPage.awayTeamAddButton.click();
+		officiateGamesPage.awayTeamAddButtons.get(0).click();
 	}
 
 	@When("user clicks the save button")
@@ -131,10 +131,10 @@ public class EditScorecardImpl
 	public void scores_should_be_updated() throws InterruptedException
 	{
 		Thread.sleep(4000);
-		afterData[0] = Integer.parseInt(gamesPage.homeScores.get(0).getText());
-		afterData[1] = Integer.parseInt(gamesPage.homeFouls.get(0).getText());
-		afterData[2] = Integer.parseInt(gamesPage.awayScores.get(0).getText());
-		afterData[3] = Integer.parseInt(gamesPage.awayFouls.get(0).getText());
+		afterData[0] = Integer.parseInt(gamesPage.homeScores.get(1).getText());
+		afterData[1] = Integer.parseInt(gamesPage.homeFouls.get(1).getText());
+		afterData[2] = Integer.parseInt(gamesPage.awayScores.get(1).getText());
+		afterData[3] = Integer.parseInt(gamesPage.awayFouls.get(1).getText());
 
 		for (int i = 0; i < beforeData.length; ++i)
 		{

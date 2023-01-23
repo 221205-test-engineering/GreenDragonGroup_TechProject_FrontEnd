@@ -49,30 +49,19 @@ public class OfficiateGamesPage
     public WebElement closeButton;
 
     //home team
-    @FindBy(xpath = "//div[1]//dd[1]//button")
+    @FindBy(xpath = "//div[1]//dd[1]//button[1]")
     public List<WebElement> homeTeamAddPointsButtons;
 
-    @FindBy(xpath = "//div[1]//dd[1]//input")
-    public WebElement homeTeamPointsInput;
-
-    @FindBy(xpath = "//div[1]//dd[2]//input")
-    public WebElement homeTeamFoulsInput;
-
     @FindBy(xpath = "//div[1]//dd[2]//button")
-    public WebElement homeTeamAddButton;
+    public List<WebElement> homeTeamAddButtons;
 
     // Away Team
-    @FindBy(xpath = "//div[2]//dd[1]//button")
+    @FindBy(xpath = "//div[2]//dd[1]//button[1]")
     public List<WebElement> awayTeamAddPointsButtons;
 
-    @FindBy(xpath = "//div[2]//dd[1]//input")
-    public WebElement awayTeamPointsInput;
-
-    @FindBy(xpath = "//div[2]//dd[2]//input")
-    public WebElement awayTeamFoulsInput;
 
     @FindBy(xpath = "//div[2]//dd[2]//button")
-    public WebElement awayTeamAddButton;
+    public List<WebElement> awayTeamAddButtons;
 
 
     @FindBy(xpath = "//button[contains(text(), 'Save')]")

@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GreenDragonGroup_TechProject_FrontEnd.iml" filepath="$PROJECT_DIR$/.idea/GreenDragonGroup_TechProject_FrontEnd.iml" />
       <module fileurl="file://$PROJECT_DIR$/IntramuralsAutomation/IntramuralsAutomation.iml" filepath="$PROJECT_DIR$/IntramuralsAutomation/IntramuralsAutomation.iml" />
     </modules>
   </component>
